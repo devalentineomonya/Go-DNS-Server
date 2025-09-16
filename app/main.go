@@ -5,15 +5,10 @@ import (
 	"net"
 )
 
-// Ensures gofmt doesn't remove the "net" import in stage 1 (feel free to remove this!)
-// var _ = net.ListenUDP
+
 
 func main() {
-	// You can use print statements as follows for debugging, they'll be visible when running tests.
-	// fmt.Println("Logs from your program will appear here!")
-	Test()
-	// Uncomment this block to pass the first stage
-	//
+
 	udpAddr, err := net.ResolveUDPAddr("udp", "127.0.0.1:2053")
 	if err != nil {
 		fmt.Println("Failed to resolve UDP address:", err)
@@ -33,7 +28,7 @@ func main() {
 		size, source, err := udpConn.ReadFromUDP(buf)
 		if err != nil {
 			fmt.Println("Error receiving data:", err)
-			// break
+			break
 		}
 
 		receivedData := string(buf[:size])
